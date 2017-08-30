@@ -1,10 +1,36 @@
 <html>
      <body>
-     <form>
+         <form action="/" method="get">
+         <input type="text" name="city" placeholder="weather search"/>
+         <input type="submit" value="Submit"/>
+         </form>
+        <h2>Current weather</h2>
+        <p>City: <b>{{weather.city}},{{weather.country}}</b></p>
+        <p>{{weather.description}} | {{weather.temperature}}&#8451;</p>
+         <form action="/" method="get">
         <input type="text"  name="publication" placeholder="search" />
         <input type="submit" value="Submit" />
-     </form>
-         <h1>  Headlines </h1>
+         </form>
+         <h2>Currency</h2>
+         <form>
+             form: <select name="curency_from">
+             {% for currency in currencies %}
+             <option value="{{currency}}"
+                     {{'selected="selected"' if currency_from==currency }}>{{currency}}
+             </option>
+             {% endfor %}
+            </select>
+              to: <select name="curency_to">
+             {% for currency in currencies %}
+             <option value="{{currency}}"
+             {{'selected="selected"' if currency_to==currency}}>{{currency}}</option>
+             {% endfor %}
+
+         </select>
+             <input type="submit" value="Submit">
+         </form>
+         1 {{currency_from}} = {{currency_to}} {{rate}}
+        <h2>Headlines</h2>
          {%for article in articles%}
          <b><a href="{{article.link}}">{{article.title}}</a></b> <br/>
          <i>{{article.published}}</i> <br/>
